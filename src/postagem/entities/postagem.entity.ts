@@ -1,5 +1,6 @@
 import { IsNotEmpty } from "class-validator";
 import { Tema } from "src/tema/entities/tema.entity";
+import { Usuario } from "src/usuario/entities/usuario.entity";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 //create table tb_postagem;
@@ -23,5 +24,10 @@ export class Postagem{
   @ManyToOne(() => Tema, (tema) => tema.postagem, {
     onDelete: "CASCADE"
   })
-  tema: Tema
+  tema: Tema // Chave entrangeira
+
+  @ManyToOne(() => Usuario, (usuario) => usuario.postagem, {
+    onDelete: "CASCADE"
+  })
+  usuario: Usuario; // chave entrangeira
 }
